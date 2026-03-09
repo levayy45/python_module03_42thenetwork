@@ -20,8 +20,9 @@ if __name__ == "__main__":
         print(f"High score: {max(my_list)}")
         print(f"Low score: {min(my_list)}")
         print(f"Score range: {max(my_list) - min(my_list)}")
+
     else:
         print(
             "No scores provided. Usage: python3 ft_score_analytics.py"
-            "<score1> <score2> ..."
+            " <score1> <score2> ..."
         )
