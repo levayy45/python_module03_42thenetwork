@@ -4,8 +4,11 @@ import time
 
 def game_event_generator(count: int) -> typing.Generator:
     players = ["alice", "bob", "charlie", "diana", "eve"]
-    actions = ["killed monster", "found treasure", "leveled up", "collected item", "defeated boss"]
-    
+    actions = [
+        "killed monster", "found treasure",
+        "leveled up", "collected item", "defeated boss"
+        ]
+
     for i in range(count):
         player_index = i % len(players)
         action_index = i % len(actions)
