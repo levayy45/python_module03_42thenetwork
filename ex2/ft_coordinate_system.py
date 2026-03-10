@@ -11,7 +11,7 @@ if __name__ == "__main__":
     x1, y1, z1 = origin
     x2, y2, z2 = position
     distance = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2)
-    print(f"Distance between {origin} and {position}: {round(distance, 2)}")
+    print(f"Distance between {origin} and {position}: {distance:.2f}")
 
     coord_string = "3,4,0"
     print()
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         print("Parsed position:", parsed_invalid)
     except ValueError as e:
         print(f"Error parsing coordinates: {e}")
-        print(f"Error details - Type: ValueError, Args: {e.args},")
+        print(f"Error details - Type: {ValueError.__name__}, Args: {e.args}")
 
     print()
     print("Unpacking demonstration:")
