@@ -2,16 +2,19 @@ import sys
 
 if __name__ == "__main__":
     print("=== Player Score Analytics ===")
+
     my_list = []
+
     for arg in sys.argv[1:]:
         try:
             score = int(arg)
             my_list.append(score)
         except ValueError:
             print(
-                f"Invalid score '{arg}' skipped. Please provide integer"
+                f"Invalid score '{arg}' skipped. Please provide integer "
                 "values only."
             )
+
     if my_list:
         print("Scores processed:", my_list)
         print(f"Total players: {len(my_list)}")
