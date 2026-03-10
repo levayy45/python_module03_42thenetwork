@@ -12,19 +12,26 @@ if __name__ == "__main__":
         try:
             parts = arg.split(":")
             if len(parts) != 2:
-                print(f"Invalid format '{arg}' skipped. Expected item:quantity")
+                print(
+                    f"Invalid format '{arg}' skipped. Expected item:quantity"
+                    )
                 continue
             item = parts[0]
             if item == "":
-                print(f"Invalid format '{arg}' skipped. Item name cannot be empty.")
+                print(
+                    f"Invalid format '{arg}' skipped. "
+                    "Item name cannot be empty.")
                 continue
             quantity = int(parts[1])
             if quantity < 0:
-                print(f"Invalid quantity for '{item}' skipped. Quantity must be positive.")
+                print(f"Invalid quantity for '{item}' "
+                      "skipped. Quantity must be positive.")
                 continue
             inventory.update({item: quantity})
         except ValueError:
-            print(f"Invalid quantity in '{arg}' skipped. Quantity must be an integer.")
+            print(
+                f"Invalid quantity in '{arg}' skipped. "
+                "Quantity must be an integer.")
             continue
 
     if len(inventory) == 0:
@@ -95,4 +102,7 @@ if __name__ == "__main__":
     values_list = ", ".join(str(v) for v in inventory.values())
     print("Dictionary keys:", keys_list)
     print("Dictionary values:", values_list)
-    print("Sample lookup - 'sword' in inventory:", inventory.get("sword") is not None)
+    print(
+        "Sample lookup - 'sword' in inventory:",
+        inventory.get("sword") is not None
+            )
