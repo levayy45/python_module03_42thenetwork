@@ -62,13 +62,14 @@ def ft_int(s: str) -> int:
     return result
 
 
-if __name__ == "__main__":
+def main() -> None:
+
     inventory: dict = dict()
 
     if len(sys.argv) < 2:
         print("No inventory provided.")
         print("Usage: python3 ft_inventory_system.py item:quantity ...")
-        sys.exit()
+        return
 
     for arg in sys.argv[1:]:
         try:
@@ -98,7 +99,7 @@ if __name__ == "__main__":
 
     if len(inventory) == 0:
         print("No valid inventory items to process.")
-        sys.exit()
+        return
 
     print("=== Inventory System Analysis ===")
     total_items: int = ft_sum(inventory.values())
@@ -191,3 +192,6 @@ if __name__ == "__main__":
         "Sample lookup - 'sword' in inventory:",
         inventory.get("sword") is not None
             )
+
+if __name__ == "__main__":
+    main()
