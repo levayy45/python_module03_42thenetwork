@@ -2,7 +2,7 @@ if __name__ == "__main__":
     print("=== Achievement Tracker System ===")
     print()
 
-    alice = set(["first_kill", "level_10", "treasure_hunter", "speed_demon"])
+    alice = set(["first_kill", "first_kill", "level_10", "treasure_hunter", "speed_demon"])
     bob = set(["first_kill", "level_10", "boss_slayer", "collector"])
     charlie = set(
         ["level_10", "treasure_hunter", "boss_slayer",
