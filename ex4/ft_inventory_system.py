@@ -29,11 +29,11 @@ def ft_split(s: str, sep: str) -> list:
     current: str = ""
     for char in s:
         if char == sep:
-            parts.append(current)
+            parts += [current]
             current = ""
         else:
             current += char
-    parts.append(current)
+    parts += [current]
     return parts
 
 
@@ -42,6 +42,9 @@ def ft_int(s: str) -> int:
         '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
         '5': 5, '6': 6, '7': 7, '8': 8, '9': 9
     }
+
+    if len(s) == 0:
+        raise ValueError("invalid literal: empty string!")
 
     result: int = 0
     negative: bool = False
@@ -91,10 +94,8 @@ def main() -> None:
                       "skipped. Quantity must be positive.")
                 continue
             inventory.update({item: quantity})
-        except ValueError:
-            print(
-                f"Invalid quantity in '{arg}' skipped. "
-                "Quantity must be an integer.")
+        except ValueError as e:
+            print(f"Invalid quantity in '{arg}' skipped. Details: {e}")
             continue
 
     if len(inventory) == 0:
