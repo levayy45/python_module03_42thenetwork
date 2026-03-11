@@ -18,6 +18,7 @@ if __name__ == "__main__":
 
     coord_string = "3,4,0"
     print()
+
     print(f'Parsing coordinates: "{coord_string}"')
     try:
         parts = coord_string.split(",")
@@ -39,6 +40,7 @@ if __name__ == "__main__":
 
     invalid_string = "abc,def,ghi"
     print()
+
     print(f'Parsing invalid coordinates: "{invalid_string}"')
     try:
         parts = invalid_string.split(",")
@@ -53,8 +55,8 @@ if __name__ == "__main__":
             )
     except Exception as e:
         print(f"Error : {e}")
-
     print()
+
     print("Unpacking demonstration:")
     try:
         x, y, z = parsed
