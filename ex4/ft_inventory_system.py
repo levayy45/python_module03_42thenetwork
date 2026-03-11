@@ -49,9 +49,12 @@ if __name__ == "__main__":
 
     print("=== Current Inventory ===")
     for item, qty in sorted_items:
-        percentage = round((qty / total_items) * 100, 1)
-        unit_word = "units" if qty > 1 else "unit"
-        print(f"{item}: {qty} {unit_word} ({percentage}%)")
+        try:
+            percentage = (qty / total_items) * 100
+            unit_word = "units" if qty > 1 else "unit"
+            print(f"{item}: {qty} {unit_word} ({percentage:.1f}%)")
+        except ZeroDivisionError:
+            print(f"{item}: {qty} {unit_word} (0%)")
     print()
 
     print("=== Inventory Statistics ===")
