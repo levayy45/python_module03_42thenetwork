@@ -4,12 +4,13 @@ if __name__ == "__main__":
     print("=== Player Score Analytics ===")
 
     my_list = []
-
+    valide: bool = False
     for arg in sys.argv[1:]:
         try:
             score = int(arg)
-            my_list.append(score)
+            my_list += [score]
         except ValueError:
+            valide = True
             print(
                 f"Invalid score '{arg}' skipped. Please provide integer "
                 "values only."
@@ -24,7 +25,7 @@ if __name__ == "__main__":
         print(f"Low score: {min(my_list)}")
         print(f"Score range: {max(my_list) - min(my_list)}")
 
-    else:
+    elif not valide:
         print(
             "No scores provided. Usage: python3 ft_score_analytics.py"
             " <score1> <score2> ..."
