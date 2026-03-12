@@ -194,5 +194,6 @@ def main() -> None:
         inventory.get("sword") is not None
             )
 
+
 if __name__ == "__main__":
     main()

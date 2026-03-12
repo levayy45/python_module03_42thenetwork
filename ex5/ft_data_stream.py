@@ -1,5 +1,4 @@
 import typing
-import time
 
 
 def game_event_generator(count: int) -> typing.Generator:
@@ -19,17 +18,17 @@ def game_event_generator(count: int) -> typing.Generator:
 
 
 def fibonacci_generator() -> typing.Generator:
-    a = 0
-    b = 1
+    a: int = 0
+    b: int = 1
     while True:
         yield a
         a, b = b, a + b
 
 
 def prime_generator() -> typing.Generator:
-    num = 2
+    num: int = 2
     while True:
-        is_prime = True
+        is_prime: bool = True
         for i in range(2, num):
             if num % i == 0:
                 is_prime = False
@@ -40,10 +39,10 @@ def prime_generator() -> typing.Generator:
 
 
 def take(n: int, gen: typing.Generator) -> list:
-    result = []
+    result: list = []
     try:
         for _ in range(n):
-            result.append(next(gen))
+            result += [next(gen)]
     except StopIteration:
         pass
     return result
@@ -53,25 +52,23 @@ if __name__ == "__main__":
     print("=== Game Data Stream Processor ===")
     print()
 
-    event_count = 1000
+    event_count: int = 1000
     print(f"Processing {event_count} game events...")
     print()
 
-    stream = game_event_generator(event_count)
+    stream: typing.Generator = game_event_generator(event_count)
 
-    total_events = 0
-    high_level_count = 0
-    treasure_count = 0
-    levelup_count = 0
-    first_three = []
-
-    start_time = time.time()
+    total_events: int = 0
+    high_level_count: int = 0
+    treasure_count: int = 0
+    levelup_count: int = 0
+    first_three: list = []
 
     for event_id, player, level, action in stream:
         total_events = total_events + 1
 
         if len(first_three) < 3:
-            first_three.append((event_id, player, level, action))
+            first_three += [(event_id, player, level, action)]
 
         if level >= 10:
             high_level_count = high_level_count + 1
@@ -79,9 +76,6 @@ if __name__ == "__main__":
             treasure_count = treasure_count + 1
         if action == "leveled up":
             levelup_count = levelup_count + 1
-
-    end_time = time.time()
-    elapsed = round(end_time - start_time, 3)
 
     for event_id, player, level, action in first_three:
         print(f"Event {event_id}: Player {player} (level {level}) {action}")
@@ -95,17 +89,16 @@ if __name__ == "__main__":
     print(f"Level-up events: {levelup_count}")
     print()
     print("Memory usage: Constant (streaming)")
-    print(f"Processing time: {elapsed} seconds")
     print()
 
     print("=== Generator Demonstration ===")
 
-    fib_gen = fibonacci_generator()
-    fib_values = take(10, fib_gen)
-    fib_str = ", ".join(str(x) for x in fib_values)
-    print(f"Fibonacci sequence (first 10): {fib_str}")
+    fib_gen: typing.Generator = fibonacci_generator()
+    fib_values: list = take(10, fib_gen)
+    print("Fibonacci sequence (first 10):", end=" ")
+    print(*fib_values, sep=", ")
 
-    prime_gen = prime_generator()
-    prime_values = take(5, prime_gen)
-    prime_str = ", ".join(str(x) for x in prime_values)
-    print(f"Prime numbers (first 5): {prime_str}")
+    prime_gen: typing.Generator = prime_generator()
+    prime_values: list = take(5, prime_gen)
+    print("Prime numbers (first 5):", end=" ")
+    print(*prime_values, sep=", ")
