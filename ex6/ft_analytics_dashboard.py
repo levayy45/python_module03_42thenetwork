@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
     def get_score(player):
         return player["score"]
-    
+
     top = max(players_data, key=get_score) if players_data else None
 
     print("Total players:", total_players)
